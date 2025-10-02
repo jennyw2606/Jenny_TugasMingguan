@@ -3,13 +3,19 @@
 @section('title', 'Home - MyApp')
 
 @section('content')
-<section class="hero">
+<section class="hero" style="background-color:#d2b48c; padding:40px; border-radius:12px;">
   <h1>Selamat datang di MyApp</h1>
   <p class="lead">Contoh project Laravel sederhana — halaman Home, Profile, Berita, dan Contact.</p>
-  <p><a href="{{ url('berita') }}" class="btn">Lihat Berita Terbaru</a></p>
+  <p><a href="{{ url('berita') }}" 
+       class="btn" 
+       style="background-color:#a67b5b; color:#fff; padding:10px 18px; border-radius:6px; text-decoration:none; font-weight:bold;">
+       Baca Berita →
+    </a>
+</p>
+
 </section>
 
-<section class="features">
+<section class="features" style="background-color:#a67b5b; padding:40px; border-radius:12px; margin-top:20px;">
   <div class="card-group">
     <article class="card">
       <h3>Profil</h3>

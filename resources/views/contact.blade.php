@@ -11,9 +11,9 @@
       <h3>Informasi Kontak</h3>
       <p>Jika ada pertanyaan, silakan hubungi melalui detail berikut:</p>
       <ul class="contact-list">
-        <li><strong>Email:</strong> jenny@example.com</li>
-        <li><strong>Telepon:</strong> +62 812-3456-7890</li>
-        <li><strong>Alamat:</strong> Jl. Contoh No. 123, Jakarta</li>
+        <li><strong>Email:</strong> jennywulandari2606@gmail.com</li>
+        <li><strong>Telepon:</strong> +62 857-8671-6092</li>
+        <li><strong>Alamat:</strong> Jl. Gemah Sari, Semarang</li>
       </ul>
     </div>
 

@@ -15,9 +15,9 @@
 
       <h4>Kontak</h4>
       <ul class="profile-list">
-        <li><strong>Email:</strong> jenny@example.com</li>
-        <li><strong>Telepon:</strong> +62 812-3456-7890</li>
-        <li><strong>Lokasi:</strong> Jakarta, Indonesia</li>
+        <li><strong>Email:</strong> jennywulandari2606@gmail.com</li>
+        <li><strong>Telepon:</strong> +62 857-8671-6092</li>
+        <li><strong>Lokasi:</strong> Semarang, Indonesia</li>
       </ul>
 
       <h4>Skill</h4>
