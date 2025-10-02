@@ -11,7 +11,7 @@
     <div class="container header-inner">
       <div class="logo"><a href="{{ url('/') }}">My<span class="logo-accent">App</span></a></div>
       <nav class="main-nav">
-        <a href="{{ url('home') }}" class="{{ Request::is('home') ? 'active' : '' }}">Home</a>
+        <a href="{{ url('/') }}" class="{{ Request::is('home') ? 'active' : '' }}">Home</a>
         <a href="{{ url('profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profile</a>
         <a href="{{ url('berita') }}" class="{{ Request::is('berita') ? 'active' : '' }}">Berita</a>
         <a href="{{ url('contact') }}" class="{{ Request::is('contact') ? 'active' : '' }}">Contact</a>
