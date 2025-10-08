@@ -9,3 +9,19 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Light brown page background (coklat muda) and basic text defaults */
+body {
+    background-color: #d2b48c; /* tan / coklat muda */
+    color: #222; /* dark text for contrast */
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Keep main content readable by using a slightly translucent white background for the page container */
+.container {
+    background: rgba(255,255,255,0.85);
+    padding: 1.25rem;
+    border-radius: 6px;
+}
