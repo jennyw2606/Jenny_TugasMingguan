@@ -4,8 +4,10 @@
 
 @section('content')
 <section class="profile">
-  <div class="profile-card">
-    <div class="avatar">JW</div>
+  <div class="profile-card" style="display: flex; align-items: center; gap: 15px;">
+<div class="avatar" style="width:60px; height:60px; border-radius:50%; overflow:hidden;">
+  <img src="{{ asset('img/jenny.jpeg') }}" class="profile-img">
+</div>
     <div class="profile-info">
       <h2>Jenny Wulandari</h2>
       <p class="muted">Full-stack Developer / Mahasiswa TI</p>

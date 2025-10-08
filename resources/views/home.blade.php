@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="hero" style="background-color:#d2b48c; padding:40px; border-radius:12px;">
-  <h1>Selamat datang di MyApp</h1>
+  <h1>Selamat datang di Laravel Jenny</h1>
   <p class="lead">Contoh project Laravel sederhana — halaman Home, Profile, Berita, dan Contact.</p>
   <p><a href="{{ url('berita') }}" 
        class="btn" 
