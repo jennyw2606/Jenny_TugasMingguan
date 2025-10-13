@@ -116,12 +116,12 @@
 <section class="profile">
   <div class="profile-card">
     <div class="avatar">
-      <img src="{{ asset('img/jenny.jpeg') }}" alt="Foto Jenny Wulandari">
+      <img src="{{ asset(path: 'img/photo jenny.jpg') }}" alt="Foto Jenny Wulandari">
     </div>
 
     <div class="profile-info">
       <h2>Jenny Wulandari</h2>
-      <p class="muted">Full-Stack Developer • Mahasiswa Teknik Informatika</p>
+      <p class="muted">Full-Stack Developer • Mahasiswa Teknologi Informasi</p>
 
       <h4>✨ Tentang</h4>
       <p>

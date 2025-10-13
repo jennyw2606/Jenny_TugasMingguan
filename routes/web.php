@@ -65,4 +65,10 @@ Route::get('/dosen', function () {
     return view('dosen');
 });
 
+use App\Http\Controllers\NewsController;
+
+Route::get('/berita', [NewsController::class, 'index'])->name('berita.index');
+Route::get('/berita/{slug}', [NewsController::class, 'show'])->name('berita.show');
+
+
 
