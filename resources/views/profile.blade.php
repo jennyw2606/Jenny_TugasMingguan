@@ -116,7 +116,7 @@
 <section class="profile">
   <div class="profile-card">
     <div class="avatar">
-      <img src="{{ asset(path: 'img/photo jenny.jpg') }}" alt="Foto Jenny Wulandari">
+      <img src="{{ asset(path: 'img/jenny.jpg') }}" alt="Foto Jenny Wulandari">
     </div>
 
     <div class="profile-info">
