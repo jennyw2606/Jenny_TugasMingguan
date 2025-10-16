@@ -1,5 +1,6 @@
 <?php
 
+use App\http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Models\Berita;
 
@@ -54,6 +55,14 @@ Route::get('/materidosen-berita', function () {
     "title" => "Berita",
     "new_berita" => Berita::ambildata()
     ]);
+});
+Route::get('/berita', [BeritaController::class, 'index']);
+Route::get('/berita/{slug}', [BeritaController::class,'tampildata']);
+
+Route::get('datamahasiswa', [MahasiswaController::class,'index']);
+
+Route::get('/berita/{slug}', function ($slugp) {
+    
 });
 
 Route::get('/materidosen/{slug}', function ($slugp) {

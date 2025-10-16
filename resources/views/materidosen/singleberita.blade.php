@@ -7,5 +7,5 @@
         <p>{{ $new_berita['konten'] }}</p>
     </article>
 
-    <a href="/dosen-berita">← Kembali</a>
+    <a href="/materidosen-berita">← Kembali</a>
 @endsection

@@ -14,19 +14,19 @@ class Berita extends Model
             "judul" => "Unimus Jaya",
             "slug" => "unimus-jaya",
             "penulis" => "Jenny W",
-            "konten" => "Unimus Bergembira"
+            "konten" => "Unimus Bergembira karena meraih juara 1 diajang bergengsi"
         ],
         [
             "judul" => "Berita Terkini",
             "slug"  => "berita-terkini",
-            "penulis" => "Hafisa",
+            "penulis" => "Hafisa Sistya",
             "konten" => "Mukbang 20 KG Ayam Geprek"
         ],
         [
             "judul" => "Berita Viral",
             "slug"  => "berita-viral",
-            "penulis" => "Amar",
-            "konten" => "Unimus Juara 1 Lomba"
+            "penulis" => "Amar Febian",
+            "konten" => "Bola berbentuk bulat"
         ]
     ];
 
