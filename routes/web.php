@@ -56,8 +56,15 @@ Route::get('/materidosen-berita', function () {
     "new_berita" => Berita::ambildata()
     ]);
 });
+
+
 Route::get('/berita', [BeritaController::class, 'index']);
 Route::get('/berita/{slug}', [BeritaController::class,'tampildata']);
+
+Route::get('/mahasiswa', [MahasiswaController::class, 'tampildata']);
+Route::get('/tambahmahasiswa', [MahasiswaController::class,'tambahmahasiswa']);
+
+Route::get('/insertdata', [MahasiswaController::class,'insertdata']);
 
 Route::get('datamahasiswa', [MahasiswaController::class,'index']);
 
@@ -77,6 +84,8 @@ Route::get('/materidosen-about', function () {
     "title" => "About"
     ]);
 });
+
+Route::get('/materidosen-about', function () {});
 
 
 
