@@ -3,6 +3,10 @@
 use App\http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Models\Berita;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('home');
@@ -68,9 +72,9 @@ Route::get('/insertdata', [MahasiswaController::class,'insertdata']);
 
 Route::get('datamahasiswa', [MahasiswaController::class,'index']);
 
-Route::get('/berita/{slug}', function ($slugp) {
+Route::get('/tampildata/{id}', [MahasiswaController::class,'tampildata']);
+Route::post('/edit data/{id}', [MahasiswaController::class, 'insertdata']);
     
-});
 
 Route::get('/materidosen/{slug}', function ($slugp) {
     return view('materidosen.singleberita', [

@@ -31,4 +31,22 @@ public function insertdata(Request $request)
     return redirect()-> route('mahasiswa')-> with('success', 'Data Berhasil Ditambahkan');
 }
 
+public function tampildata($id)
+{
+    $data = Mahasiswa::find($id);
+
+    return view("edit", [
+        "title" => "Edit Data Mahasiswa",
+        "data" => $data;
+    ]);
+}
+public function editdata(Request $request, $id)
+{
+    $data = Mahasiswa::find($id);
+    $data=>update($request->all());
+
+    return redirect()-> route('mahasiswa')-> with('success', 'Data Berhasil Diupdate');
+
+}
+
 }
