@@ -19,7 +19,7 @@ class BeritaController extends Controller
 
     return view('materidosen.singleberita', [
     "title" => "Berita",
-    "new_berita" => Berita::caridata($slugp)
+    "berita" => Berita::caridata($slugp)
     ]);
 
     }

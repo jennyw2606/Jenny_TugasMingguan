@@ -72,16 +72,19 @@ Route::get('/insertdata', [MahasiswaController::class,'insertdata']);
 
 Route::get('datamahasiswa', [MahasiswaController::class,'index']);
 
-Route::get('/tampildata/{id}', [MahasiswaController::class,'tampildata']);
-Route::post('/edit data/{id}', [MahasiswaController::class, 'insertdata']);
+Route::get('/tampildata/{id}', [MahasiswaController::class,'tampildata'])->name('tampildata');
+Route::post('/edit data/{id}', [MahasiswaController::class, 'editdata'])->name('editdata');
+
+Route::post('/delete/{id}', [MahasiswaController::class, 'delete'])->name('delete');
     
 
 Route::get('/materidosen/{slug}', function ($slugp) {
     return view('materidosen.singleberita', [
-    "title" => "Berita",
-    "new_berita" => Berita::caridata($slugp)
+        "title" => "Berita",
+        "berita" => (object) Berita::caridata($slugp) 
     ]);
 });
+
 
 Route::get('/materidosen-about', function () {
     return view('materidosen.about', [
