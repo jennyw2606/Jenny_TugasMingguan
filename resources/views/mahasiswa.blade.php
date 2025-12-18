@@ -1,48 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dosen</title>
-</head>
-<div>
-    <h1>Data Mahasiswa</h1>
-    <p>Halaman ini berisi informasi tentang data mahasiswa</p>
-    <p>Website ini dibuat untuk latihan Laravel sesuai materi perkuliahan</p> <br>
-    <button type="button" class="btn btn-succes">Tambah Data</button>
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success" role="alert">
-        {{ $message }}
-    </div>
-    @endif
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">No</t>
-                <th scope="col">Name</th>
-                <th scope="col">NIM</th>
-                <th scope="col">Program Studi</th>
-                <th scope="col">Email</th>
-                <th scope="col">No HP</th>
-                <th scope="col">Aksi</th>
-            </tr>
-        </thead>
+@extends('main')
+
+@section('title', 'Data Mahasiswa')
+
+@section('content')
+
+<h1 class="mb-3">Data Mahasiswa</h1>
+
+<a href="/tambahmahasiswa" class="btn btn-success mb-3">Tambah Data</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>NIM</th>
+            <th>Prodi</th>
+            <th>Email</th>
+            <th>No HP</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
     <tbody>
-    @foreach ($data as $mahasiswa)
-            <tr>
-                <th scope="row">1</th>
-                <td>{{ $mahasiswa }}</td>
-                <td>1324242221</td>
-                <td>Gizi</td>
-                <td>jeje@gmail.com</td>
-                <td>082233445566</td>
+        @foreach ($mahasiswas as $index => $mahasiswa)
+        <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ $mahasiswa->name }}</td>
+            <td>{{ $mahasiswa->nim }}</td>
+            <td>{{ $mahasiswa->prodi }}</td>
+            <td>{{ $mahasiswa->email }}</td>
+            <td>{{ $mahasiswa->nohp }}</td>
             <td>
-                <button type="button" class="btn btn-primary">Edit</button>
-                <button type="button" class="btn btn-danger">Hapus</button>
-        </td>
-    </tr>
-    @endforeach
+                <a href="/edit/{{ $mahasiswa->id }}" class="btn btn-primary btn-sm">Edit</a>
+
+                <a href="#" class="btn btn-danger btn-sm delete"
+                   data-id="{{ $mahasiswa->id }}"
+                   data-nama="{{ $mahasiswa->name }}">
+                   Hapus
+                </a>
+            </td>
+        </tr>
+        @endforeach
     </tbody>
 </table>
-</div>
+
+{{-- CDN --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+{{-- SWEET ALERT SUCCESS (TAMBAH / HAPUS / EDIT) --}}
+@if (session('success'))
+<script>
+    Swal.fire({
+        title: 'Berhasil!',
+        text: '{{ session('success') }}',
+        icon: 'success',
+    });
+</script>
+@endif
+
+{{-- SWEET ALERT DELETE --}}
+<script>
+    $(document).on('click', '.delete', function () {
+
+        let id   = $(this).data('id');
+        let nama = $(this).data('nama');
+
+        Swal.fire({
+            title: 'Yakin dihapus?',
+            text: 'Data ' + nama + ' akan dihapus!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = "/deletedata/" + id;
+            }
+        });
+    });
+</script>
+
 @endsection

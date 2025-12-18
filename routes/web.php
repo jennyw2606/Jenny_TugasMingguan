@@ -27,10 +27,6 @@ Route::get('/contact', function () {
     ]);
 });
 
-Route::get('/mahasiswa', function (): View {
-    return view('mahasiswa');
-});
-
 Route::get('/dosen', function () {
     return view('dosen');
 });
@@ -93,6 +89,17 @@ Route::get('/materidosen-about', function () {
 });
 
 Route::get('/materidosen-about', function () {});
+
+// ====== ROUTE MAHASISWA ====== //
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('/tambahmahasiswa', [MahasiswaController::class, 'tambahmahasiswa']);
+Route::post('/insertdata', [MahasiswaController::class, 'insertdata']);
+
+Route::get('/edit/{id}', [MahasiswaController::class, 'edit']);
+Route::post('/update/{id}', [MahasiswaController::class, 'update']);
+Route::get('/deletedata/{id}', [MahasiswaController::class, 'deletedata']);
+
+
 
 
 
