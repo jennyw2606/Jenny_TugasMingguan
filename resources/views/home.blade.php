@@ -1,150 +1,90 @@
 @extends('layouts.app')
 
-@section('title', 'Home - MyApp')
+@section('title', 'Home')
 
 @section('content')
 <style>
-  /* ==== Gaya Umum ==== */
-  body {
-    font-family: 'Poppins', sans-serif;
-  }
-
-  section.hero {
-    background: linear-gradient(135deg, #d2b48c, #c7a17a);
-    color: #fff;
-    padding: 60px;
-    border-radius: 16px;
+.hero {
+    background: linear-gradient(135deg,#6366f1,#4f46e5);
+    color: white;
+    padding: 70px 40px;
+    border-radius: 20px;
     text-align: center;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    animation: fadeIn 1s ease-in-out;
-  }
+    box-shadow: 0 12px 30px rgba(79,70,229,.4);
+    animation: fadeIn .6s ease;
+}
 
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-  }
+.hero h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+}
 
-  .hero p.lead {
+.hero p {
     font-size: 1.1rem;
-    margin-bottom: 25px;
-    color: #f5f5f5;
-  }
+    margin: 20px 0 35px;
+    opacity: .95;
+}
 
-  .hero .btn {
-    background-color: #8b5e3c;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 8px;
+.hero a {
+    background: white;
+    color: #4f46e5;
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-  }
+    transition: .3s;
+}
 
-  .hero .btn:hover {
-    background-color: #704b2a;
-    transform: scale(1.05);
-  }
+.hero a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
+}
 
-  /* ==== Fitur Section ==== */
-  section.features {
-    background-color: #fff8f2;
-    padding: 50px;
-    border-radius: 16px;
-    margin-top: 30px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-    text-align: center;
-    animation: slideUp 1s ease-in-out;
-  }
+.features {
+    margin-top: 60px;
+}
 
-  .features h2 {
-    font-size: 2rem;
-    color: #8b5e3c;
-    margin-bottom: 30px;
-  }
+.feature-card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    transition: .3s;
+    height: 100%;
+}
 
-  .card-group {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 25px;
-    width: 300px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: left;
-  }
-
-  .card:hover {
+.feature-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-
-  .card h3 {
-    color: #8b5e3c;
-    margin-bottom: 10px;
-  }
-
-  .card p {
-    color: #555;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-  }
-
-  .link {
-    color: #a67b5b;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .link:hover {
-    text-decoration: underline;
-  }
-
-  /* ==== Animasi ==== */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+}
 </style>
 
-<section class="hero">
-  <h1>Selamat Datang di <strong>Laravel Jenny</strong> 🌸</h1>
-  <p class="lead">Eksplorasi proyek Laravel sederhana dengan desain lembut dan modern — berisi halaman Home, Profil, Berita, dan Contact.</p>
-  <a href="{{ url('berita') }}" class="btn">📢 Baca Berita Terbaru</a>
-</section>
+<div class="hero">
+    <h1>👋 Selamat Datang</h1>
+    <p>
+        Aplikasi <strong>CRUD Mahasiswa</strong> berbasis Laravel  
+        dengan desain modern dan SweetAlert
+    </p>
+    <a href="/mahasiswa">📘 Masuk Data Mahasiswa</a>
+</div>
 
-<section class="features">
-  <h2>✨ Jelajahi Fitur Menarik</h2>
-
-  <div class="card-group">
-    <article class="card">
-      <h3>👩‍💻 Profil</h3>
-      <p>Kenali pemilik aplikasi lebih dekat. Tersedia informasi singkat, keahlian, dan kontak pribadi.</p>
-      <p><a href="{{ url('profile') }}" class="link">Buka Profil →</a></p>
-    </article>
-
-    <article class="card">
-      <h3>📰 Berita</h3>
-      <p>Temukan artikel, pengumuman, serta update terbaru dari komunitas dan proyek Laravel Jenny.</p>
-      <p><a href="{{ url('berita') }}" class="link">Lihat Berita →</a></p>
-    </article>
-
-    <article class="card">
-      <h3>📬 Contact</h3>
-      <p>Kirim pesan, saran, atau pertanyaan dengan form kontak sederhana. Kami siap mendengar darimu!</p>
-      <p><a href="{{ url('contact') }}" class="link">Hubungi Kami →</a></p>
-    </article>
-  </div>
-</section>
+<div class="row features">
+    <div class="col-md-4">
+        <div class="feature-card">
+            <h4>⚡ Cepat</h4>
+            <p>Pengelolaan data mahasiswa secara efisien dan sederhana.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card">
+            <h4>🔒 Aman</h4>
+            <p>Menggunakan CSRF protection & validasi Laravel.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card">
+            <h4>✨ Modern</h4>
+            <p>UI Bootstrap + SweetAlert yang clean & nyaman.</p>
+        </div>
+    </div>
+</div>
 @endsection

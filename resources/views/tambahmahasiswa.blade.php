@@ -1,34 +1,82 @@
-@extends('layouts.main');
+@extends('layouts.app')
 
 @section('title', 'Tambah Data Mahasiswa')
-<h1> Tambah Data Mahasiswa</h1> 
-<div class="card">
-    <div class="card-body">
-    <form action="/insertdata" method="POST" encypte="multipart/form-data">
-        @csrf
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Nama</label>
-        <input type="text" name="name" id="nama" placeholder="Nama Lengkap" class="form-control"> 
-    </div>
-    <div class="mb-3">
-        <label for="for" class="form-label">NIM</label>
-        <input type="number" name="nim" id="nim" class="form-control">
-    </div>
-    <div class="mb-3 form-check">
-        <label for="prodi" class="form-label">Prpgram Studi</label>
-        <input type="text" name="prodi" id="prodi" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3 form-check">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" id="email" class="form-control">
-    </div>
-    <div class="mb-3 form-check">
-        <label for="nohp" class="form-label">Nonomor Handphone</label>
-        <input type="number" name="nohp" id="nphp" class="form-control">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
-</div>
 
 @section('content')
+<div class="container mt-4">
+
+    <h3 class="mb-3">Tambah Data Mahasiswa</h3>
+
+    {{-- ERROR VALIDASI --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form action="/mahasiswa/simpan" method="POST">
+                @csrf
+
+                <div class="mb-3">
+                    <label class="form-label">Nama</label>
+                    <input type="text"
+                           name="nama"
+                           value="{{ old('nama') }}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">NIM</label>
+                    <input type="number"
+                           name="nim"
+                           value="{{ old('nim') }}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Program Studi</label>
+                    <input type="text"
+                           name="prodi"
+                           value="{{ old('prodi') }}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email"
+                           name="email"
+                           value="{{ old('email') }}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">No HP</label>
+                    <input type="text"
+                           name="nohp"
+                           value="{{ old('nohp') }}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Simpan Data
+                </button>
+
+                <a href="/mahasiswa" class="btn btn-secondary ms-2">
+                    Kembali
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection

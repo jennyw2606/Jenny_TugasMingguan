@@ -1,48 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dosen</title>
-</head>
-<div>
-    <h1>Data Mahasiswa</h1>
-    <p>Halaman ini berisi informasi tentang data mahasiswa</p>
-    <p>Website ini dibuat untuk latihan Laravel sesuai materi perkuliahan</p> <br>
-    <button type="button" class="btn btn-succes">Tambah Data</button>
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success" role="alert">
-        {{ $message }}
+@extends('layouts.app')
+
+@section('title', 'Data Mahasiswa')
+
+@section('content')
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h3 class="mb-0">Data Mahasiswa</h3>
+                <small class="text-muted">Halaman ini berisi data mahasiswa</small>
+            </div>
+
+            <a href="/mahasiswa/tambah" class="btn btn-primary">
+                + Tambah Data
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead>
+                    <tr class="text-center">
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>NIM</th>
+                        <th>Prodi</th>
+                        <th>Email</th>
+                        <th>No HP</th>
+                        <th width="160">Aksi</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @forelse ($mahasiswas as $mhs)
+                    <tr>
+                        <td class="text-center">{{ $loop->iteration }}</td>
+                        <td>{{ $mhs->nama }}</td>
+                        <td>{{ $mhs->nim }}</td>
+                        <td>{{ $mhs->prodi }}</td>
+                        <td>{{ $mhs->email }}</td>
+                        <td>{{ $mhs->nohp }}</td>
+                        <td class="text-center">
+
+                            <a href="/mahasiswa/edit/{{ $mhs->id }}"
+                               class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+
+                            <form action="/mahasiswa/delete/{{ $mhs->id }}"
+                                  method="POST"
+                                  class="d-inline">
+                                @csrf
+                                <button type="submit"
+                                        class="btn btn-danger btn-sm btn-delete">
+                                    Hapus
+                                </button>
+                            </form>
+
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">
+                            Data mahasiswa belum tersedia
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
     </div>
-    @endif
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">No</t>
-                <th scope="col">Name</th>
-                <th scope="col">NIM</th>
-                <th scope="col">Program Studi</th>
-                <th scope="col">Email</th>
-                <th scope="col">No HP</th>
-                <th scope="col">Aksi</th>
-            </tr>
-        </thead>
-    <tbody>
-    @foreach ($data as $mahasiswa)
-            <tr>
-                <th scope="row">1</th>
-                <td>{{ $mahasiswa }}</td>
-                <td>1324242221</td>
-                <td>Gizi</td>
-                <td>jeje@gmail.com</td>
-                <td>082233445566</td>
-            <td>
-                <button type="button" class="btn btn-primary">Edit</button>
-                <button type="button" class="btn btn-danger">Hapus</button>
-        </td>
-    </tr>
-    @endforeach
-    </tbody>
-</table>
 </div>
+
 @endsection
