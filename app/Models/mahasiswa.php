@@ -12,11 +12,7 @@ class Mahasiswa extends Model
     protected $table = 'mahasiswa';
 
     protected $fillable = [
-<<<<<<< HEAD
         'nama',
-=======
-        'name',
->>>>>>> fa552da3051801d23630e272f41918a73c82a8aa
         'nim',
         'prodi',
         'email',

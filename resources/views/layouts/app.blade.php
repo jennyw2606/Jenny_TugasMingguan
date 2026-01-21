@@ -17,73 +17,132 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(120deg,#f6f9ff,#eef2ff);
+            background: linear-gradient(135deg, #f9f2ea, #f1e2d1);
         }
-        .navbar { box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(45deg, #9c6b4f, #b4835a);
+            box-shadow: 0 6px 18px rgba(156, 107, 79, .35);
+        }
+
+        /* Card */
         .card {
             border-radius: 16px;
             border: none;
-            box-shadow: 0 12px 30px rgba(0,0,0,.08);
+            background: linear-gradient(180deg, #ffffff, #f9f1e8);
+            box-shadow: 0 12px 28px rgba(156, 107, 79, .18);
             animation: fadeIn .4s ease;
         }
+
+        /* Table */
         table {
-            background: #fff;
+            background: linear-gradient(180deg, #fffdf9, #f3e6d8);
             border-radius: 14px;
             overflow: hidden;
         }
+
         table th {
-            background: #f1f3f6;
+            background: linear-gradient(45deg, #b4835a, #9c6b4f);
+            color: #ffffff;
             font-weight: 600;
             text-align: center;
         }
+
         tbody tr {
             transition: .25s;
         }
+
         tbody tr:hover {
-            background: #f6f8ff;
+            background: #efe0cf;
             transform: scale(1.01);
         }
+
+        /* Button */
         .btn {
             border-radius: 12px;
             font-weight: 500;
             transition: .25s;
         }
+
         .btn-primary {
-            background: linear-gradient(45deg,#4f46e5,#6366f1);
+            background: linear-gradient(45deg, #9c6b4f, #b4835a);
             border: none;
         }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #8b5d44, #a87452);
+        }
+
         .btn-danger {
-            background: linear-gradient(45deg,#ef4444,#f87171);
+            background: linear-gradient(45deg, #c46b4a, #e08a66);
             border: none;
         }
-        @keyframes fadeIn {
-            from {opacity:0; transform: translateY(15px);}
-            to {opacity:1; transform: translateY(0);}
-        }
+
         footer {
             font-size: 14px;
-            color: #6b7280;
+            color: #7a4f37;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="/mahasiswa">🏠 CRUD Mahasiswa</a>
+        <a class="navbar-brand fw-bold" href="/">🤎 CRUD Mahasiswa</a>
 
-        <div class="ms-auto">
-            <a href="/home" class="btn btn-light btn-sm me-2">Home</a>
-            <a href="/mahasiswa" class="btn btn-outline-light btn-sm">Mahasiswa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="ms-auto d-flex gap-2 align-items-center">
+                @auth
+                    <a href="/mahasiswa" class="btn btn-light btn-sm">Mahasiswa</a>
+                    <a href="/" class="btn btn-outline-light btn-sm">Home</a>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            👤 {{ Auth::user()->name }}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">🚪 Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @else
+                    <a href="/" class="btn btn-light btn-sm">Home</a>
+                    <a href="/login" class="btn btn-outline-light btn-sm">Login</a>
+                    <a href="/register" class="btn btn-light btn-sm">Register</a>
+                @endauth
+            </div>
         </div>
     </div>
 </nav>
 
+<!-- CONTENT -->
 <div class="container mb-5">
     @yield('content')
 </div>
 
+<!-- FOOTER -->
 <footer class="text-center py-3">
     © {{ date('Y') }} Laravel CRUD • Praktikum
 </footer>
@@ -96,12 +155,14 @@ Swal.fire({
     title: 'Berhasil 🎉',
     text: '{{ session('success') }}',
     timer: 2000,
-    showConfirmButton: false
+    showConfirmButton: false,
+    background: '#fffdf9',
+    color: '#7a4f37'
 });
 </script>
 @endif
 
-{{-- SweetAlert DELETE (FORM) --}}
+{{-- SweetAlert DELETE --}}
 <script>
 document.querySelectorAll('.form-delete').forEach(form => {
     form.addEventListener('submit', function(e){
@@ -112,9 +173,11 @@ document.querySelectorAll('.form-delete').forEach(form => {
             text: 'Data tidak bisa dikembalikan!',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#ef4444',
-            cancelButtonColor: '#6b7280',
-            confirmButtonText: 'Ya, hapus'
+            confirmButtonColor: '#c46b4a',
+            cancelButtonColor: '#b4835a',
+            confirmButtonText: 'Ya, hapus',
+            background: '#fffdf9',
+            color: '#7a4f37'
         }).then((result) => {
             if (result.isConfirmed) {
                 form.submit();
@@ -123,6 +186,9 @@ document.querySelectorAll('.form-delete').forEach(form => {
     });
 });
 </script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

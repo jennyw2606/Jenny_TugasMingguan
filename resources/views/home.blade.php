@@ -5,12 +5,12 @@
 @section('content')
 <style>
 .hero {
-    background: linear-gradient(135deg,#6366f1,#4f46e5);
-    color: white;
+    background: linear-gradient(135deg, #8b5e3c, #6f4e37);
+    color: #fdfaf6;
     padding: 70px 40px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 12px 30px rgba(79,70,229,.4);
+    box-shadow: 0 12px 30px rgba(111, 78, 55, .45);
     animation: fadeIn .6s ease;
 }
 
@@ -26,8 +26,8 @@
 }
 
 .hero a {
-    background: white;
-    color: #4f46e5;
+    background: #f3e7da;
+    color: #6f4e37;
     padding: 14px 28px;
     border-radius: 14px;
     font-weight: 600;
@@ -36,8 +36,9 @@
 }
 
 .hero a:hover {
+    background: #e6d3bf;
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
 }
 
 .features {
@@ -45,16 +46,26 @@
 }
 
 .feature-card {
-    background: white;
+    background: #fffaf4;
     border-radius: 18px;
     padding: 30px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    box-shadow: 0 10px 25px rgba(111, 78, 55, .15);
     transition: .3s;
     height: 100%;
 }
 
+.feature-card h4 {
+    color: #6f4e37;
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: #5a4634;
+}
+
 .feature-card:hover {
     transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(111, 78, 55, .25);
 }
 </style>
 
@@ -64,25 +75,32 @@
         Aplikasi <strong>CRUD Mahasiswa</strong> berbasis Laravel  
         dengan desain modern dan SweetAlert
     </p>
-    <a href="/mahasiswa">📘 Masuk Data Mahasiswa</a>
+    @auth
+        <a href="/mahasiswa">📘 Masuk Data Mahasiswa</a>
+    @else
+        <div style="margin-top: 20px;">
+            <a href="/login" style="margin-right: 10px;">🔑 Login</a>
+            <a href="/register">✍️ Daftar Akun</a>
+        </div>
+    @endauth
 </div>
 
 <div class="row features">
     <div class="col-md-4">
         <div class="feature-card">
-            <h4>⚡ Cepat</h4>
+            <h4>🚀 Cepat</h4>
             <p>Pengelolaan data mahasiswa secara efisien dan sederhana.</p>
         </div>
     </div>
     <div class="col-md-4">
         <div class="feature-card">
-            <h4>🔒 Aman</h4>
+            <h4>🔐 Aman</h4>
             <p>Menggunakan CSRF protection & validasi Laravel.</p>
         </div>
     </div>
     <div class="col-md-4">
         <div class="feature-card">
-            <h4>✨ Modern</h4>
+            <h4>🎨 Modern</h4>
             <p>UI Bootstrap + SweetAlert yang clean & nyaman.</p>
         </div>
     </div>
