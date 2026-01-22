@@ -35,7 +35,7 @@
                     @forelse ($mahasiswas as $mhs)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $mhs->nama }}</td>
+                        <td>{{ $mhs->name }}</td>
                         <td>{{ $mhs->nim }}</td>
                         <td>{{ $mhs->prodi }}</td>
                         <td>{{ $mhs->email }}</td>

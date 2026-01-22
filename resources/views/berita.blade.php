@@ -120,78 +120,29 @@
     </div>
 
     <!-- Daftar berita -->
-    <article class="news-item" data-category="update">
-      <h2>🚀 Rilis MyApp Versi 2.0</h2>
-      <div class="meta" data-date="2025-10-06">Diposting oleh Tim Dev • <span class="timeago"></span></div>
-      <p>MyApp kini tampil dengan desain baru, fitur dark mode, serta peningkatan performa yang signifikan.</p>
-      <p><strong>Kategori:</strong> Update Produk</p>
-      <p class="readmore"><a href="#">Baca Selengkapnya →</a></p>
+    @forelse($beritas as $berita)
+    <article class="news-item">
+      <h2>{{ $berita['judul'] }}</h2>
+      <div class="meta">Ditulis oleh <strong>{{ $berita['penulis'] }}</strong></div>
+      <p>{{ $berita['konten'] }}</p>
+      <p class="readmore"><a href="/berita/{{ $berita['slug'] }}">Baca Selengkapnya →</a></p>
     </article>
-
-    <article class="news-item" data-category="tutorial">
-      <h2>💡 Panduan Membuat API dengan Laravel</h2>
-      <div class="meta" data-date="2025-09-30">Ditulis oleh Kontributor Tamu • <span class="timeago"></span></div>
-      <p>Pelajari cara membangun API menggunakan Laravel mulai dari routing, controller, hingga testing endpoint.</p>
-      <p><strong>Kategori:</strong> Tutorial</p>
-      <p class="readmore"><a href="#">Pelajari Sekarang →</a></p>
+    @empty
+    <article class="news-item">
+      <p style="color: #999; text-align: center;">📰 Tidak ada berita untuk ditampilkan</p>
     </article>
-
-    <article class="news-item" data-category="event">
-      <h2>🎉 Gathering MyApp Community 2025</h2>
-      <div class="meta" data-date="2025-09-15">Admin • <span class="timeago"></span></div>
-      <p>Lebih dari 100 peserta hadir dalam gathering tahunan dengan sesi mentoring, sharing, dan workshop Laravel.</p>
-      <p><strong>Kategori:</strong> Event</p>
-      <p class="readmore"><a href="#">Lihat Dokumentasi →</a></p>
-    </article>
-
-    <article class="news-item" data-category="inspirasi">
-      <h2>🌱 Kisah di Balik Tim MyApp</h2>
-      <div class="meta" data-date="2025-09-01">Editor • <span class="timeago"></span></div>
-      <p>Dari ide kecil hingga jadi platform belajar coding yang ramai digunakan oleh pelajar dan developer muda.</p>
-      <p><strong>Kategori:</strong> Inspirasi</p>
-      <p class="readmore"><a href="#">Baca Kisahnya →</a></p>
-    </article>
+    @endforelse
   </main>
 
   <!-- Sidebar -->
   <aside>
     <h3>Berita Populer</h3>
     <ul class="popular-list">
-      <li><a href="#">10 Tips Laravel untuk Pemula</a></li>
-      <li><a href="#">Cara Deploy MyApp ke Hosting Gratis</a></li>
-      <li><a href="#">Mengenal Fitur Livewire di Laravel</a></li>
+      @foreach($beritas as $berita)
+      <li><a href="/berita/{{ $berita['slug'] }}">{{ $berita['judul'] }}</a></li>
+      @endforeach
     </ul>
-    <hr>
-    <h3>Langganan Update</h3>
-    <p>Dapatkan notifikasi setiap kali ada berita baru.</p>
-    <input type="email" placeholder="Masukkan email kamu">
-    <button style="margin-top:10px;padding:.5rem 1rem;border:none;background:#b5835a;color:#fff;border-radius:.5rem;cursor:pointer;">Langganan</button>
   </aside>
 </section>
 
-<script>
-  // Pencarian berita
-  document.getElementById('searchNews').addEventListener('input', function() {
-    const query = this.value.toLowerCase();
-    document.querySelectorAll('.news-item').forEach(item => {
-      const text = item.innerText.toLowerCase();
-      item.style.display = text.includes(query) ? '' : 'none';
-    });
-  });
-
-  // Filter kategori
-  document.getElementById('filterCategory').addEventListener('change', function() {
-    const selected = this.value;
-    document.querySelectorAll('.news-item').forEach(item => {
-      item.style.display = (selected === 'all' || item.dataset.category === selected) ? '' : 'none';
-    });
-  });
-
-  // Fitur waktu otomatis
-  document.querySelectorAll('.timeago').forEach(span => {
-    const date = new Date(span.parentElement.getAttribute('data-date'));
-    const diff = Math.floor((new Date() - date) / (1000 * 60 * 60 * 24));
-    span.textContent = diff === 0 ? 'hari ini' : `${diff} hari yang lalu`;
-  });
-</script>
 @endsection

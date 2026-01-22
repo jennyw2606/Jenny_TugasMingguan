@@ -44,13 +44,8 @@
 
         table th {
             background: linear-gradient(45deg, #b4835a, #9c6b4f);
-            color: #ffffff;
-            font-weight: 600;
+            color: white;
             text-align: center;
-        }
-
-        tbody tr {
-            transition: .25s;
         }
 
         tbody tr:hover {
@@ -62,7 +57,6 @@
         .btn {
             border-radius: 12px;
             font-weight: 500;
-            transition: .25s;
         }
 
         .btn-primary {
@@ -77,6 +71,16 @@
         .btn-danger {
             background: linear-gradient(45deg, #c46b4a, #e08a66);
             border: none;
+        }
+
+        /* FOTO PROFIL */
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #b4835a;
+            box-shadow: 0 6px 16px rgba(156, 107, 79, .35);
         }
 
         footer {
@@ -112,15 +116,17 @@
             <div class="ms-auto d-flex gap-2 align-items-center">
                 @auth
                     <a href="/mahasiswa" class="btn btn-light btn-sm">Mahasiswa</a>
-                    <a href="/" class="btn btn-outline-light btn-sm">Home</a>
-                    
+                    <a href="/berita" class="btn btn-light btn-sm">Berita</a>
+                    <a href="/profile" class="btn btn-light btn-sm">👤 Profil</a>
+                    <a href="/contact" class="btn btn-light btn-sm">📞 Contact</a>
+
                     <div class="dropdown">
-                        <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                            👤 {{ Auth::user()->name }}
+                        <button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                            {{ Auth::user()->name }}
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                                <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item">🚪 Logout</button>
                                 </form>
@@ -147,7 +153,6 @@
     © {{ date('Y') }} Laravel CRUD • Praktikum
 </footer>
 
-{{-- SweetAlert SUCCESS --}}
 @if (session('success'))
 <script>
 Swal.fire({
@@ -162,32 +167,6 @@ Swal.fire({
 </script>
 @endif
 
-{{-- SweetAlert DELETE --}}
-<script>
-document.querySelectorAll('.form-delete').forEach(form => {
-    form.addEventListener('submit', function(e){
-        e.preventDefault();
-
-        Swal.fire({
-            title: 'Yakin hapus data?',
-            text: 'Data tidak bisa dikembalikan!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#c46b4a',
-            cancelButtonColor: '#b4835a',
-            confirmButtonText: 'Ya, hapus',
-            background: '#fffdf9',
-            color: '#7a4f37'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit();
-            }
-        });
-    });
-});
-</script>
-
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Berita;
 
@@ -16,6 +17,7 @@ Auth::routes();
 
 // Route Group untuk Mahasiswa (Harus Login)
 Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index']);
     Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
     Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'tambahmahasiswa']);
     Route::post('/mahasiswa/simpan', [MahasiswaController::class, 'insertdata']);

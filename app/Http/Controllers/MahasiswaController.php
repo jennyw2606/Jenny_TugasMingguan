@@ -24,7 +24,7 @@ class MahasiswaController extends Controller
     public function insertdata(Request $request)
     {
         $request->validate([
-            'nama'  => 'required',
+            'name'  => 'required',
             'nim'   => 'required|numeric|unique:mahasiswa,nim',
             'prodi' => 'required',
             'email' => 'required|email',
@@ -32,7 +32,7 @@ class MahasiswaController extends Controller
         ]);
 
         Mahasiswa::create([
-            'nama'  => $request->nama,
+            'name'  => $request->name,
             'nim'   => $request->nim,
             'prodi' => $request->prodi,
             'email' => $request->email,
@@ -53,7 +53,7 @@ class MahasiswaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama'  => 'required',
+            'name'  => 'required',
             'nim'   => 'required|numeric|unique:mahasiswa,nim,' . $id,
             'prodi' => 'required',
             'email' => 'required|email',
@@ -63,7 +63,7 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::findOrFail($id);
 
         $mahasiswa->update([
-            'nama'  => $request->nama,
+            'name'  => $request->name,
             'nim'   => $request->nim,
             'prodi' => $request->prodi,
             'email' => $request->email,
